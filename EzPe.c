@@ -5,9 +5,6 @@
 #include <stdio.h>
 #include <wchar.h>
 
-// #TODO When pushing to github walk through the code. The __PE_HDRS structure, the import / export parsing, and the common functions that they use. KEEP IN ONE FILE FOR EASY READING. Name: PE-Parsing (Independent Functions)
-// #TODO Create detailed comments above all helper functions that I'll forget how to use.
-
 typedef struct __PE_HDRS {
     PVOID lpFileBuffer; // Pointer to Buffer of entire File
     DWORD ulFileSize; // Size of File buffer
@@ -123,7 +120,7 @@ BOOL ParseImports() {
             break;
         }
 
-        /* # TODO Uncomment this if building parser for IAT/ILT.
+        /* # Uncomment this if building parser for IAT/ILT.
         PIMAGE_THUNK_DATA thunkIAT = (PIMAGE_THUNK_DATA)import->FirstThunk;
         while (1) {
             thunkIAT++
@@ -136,7 +133,6 @@ BOOL ParseImports() {
     return TRUE;
 }
 
-//#TODO Find a PE to test on
 BOOL ParseExports() {
     PIMAGE_EXPORT_DIRECTORY pExportDir = (PIMAGE_EXPORT_DIRECTORY)(pPe->lpFileBuffer + pPe->pOptionalHeader->DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
 }
@@ -226,8 +222,6 @@ BOOL ParsePEHeaders() {
         wprintf(L"[!] Incorrect Optional Header Magic Byte");
         return FALSE;
     }
-
-    // #TODO Add Import & Export to singleton & refactor.
 
 
     /*
