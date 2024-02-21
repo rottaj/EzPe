@@ -44,7 +44,8 @@ make
 
 ## Individual Parsing Functions
 ### ParseImports()
-ParseImports relies on two helper functions. <br>
+Parses the PE's external dependencies (DLL's) when the executable is loaded into memory.<br>
+ParseImports relies on two helper functions. 
 * GetEnclosingSectionHeader: Returns PIMAGE_SECTION_HEADER given an RVA.
 * GetPtrFromRVA: Returns a pointer given an RVA.
 ```C
@@ -105,6 +106,7 @@ LPVOID GetPtrFromRVA( DWORD rva) {
 ```
 
 ### ParseRelocations()
+Parses the PE's relocation table. (.reloc)<br>
 ParseRelocations relies on 1 helper function
 * MakePtr - Returns a pointer given a pointer and an add value.
 ```C
